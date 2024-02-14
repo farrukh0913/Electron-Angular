@@ -9,103 +9,117 @@
 }
 
 ::ng-deep .mat-mdc-text-field-wrapper {
-    height: 40px !important;
-  }
-  ::ng-deep .mat-mdc-form-field-flex {
-    margin-top: -7px !important;
-  }
-  .main-container {
+  height: 40px !important;
+}
+::ng-deep .mat-mdc-form-field-flex {
+  margin-top: -7px !important;
+}
+.main-container {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  overflow: auto;
+  .toolbar {
     width: 100%;
-    height: 100vh;
+    height: 40px;
+    border-bottom: 2px solid white;
+    display: flex;
+    justify-content: start;
     background-color: black;
-    overflow: auto;
-    .toolbar {
-      width: 100%;
-      height: 40px;
-      border-bottom: 2px solid white;
+    .inner-section {
+      width: 70%;
       display: flex;
-      justify-content: start;
-      background-color: black;
-      .inner-section {
-        width: 70%;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+      span {
+        color: white;
+      }
+      .bold {
+        font-weight: 800;
+        font-size: 18px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+    }
+  }
+  .button-container {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    .buutons {
+      width: 70%;
+      margin-left: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      div{
         display: flex;
         justify-content: space-between;
-        flex-direction: row;
+        width: 45%;
         align-items: center;
+      }
+      span{
+        text-decoration: underline;
+        color: white;
+      }
+      .white-bg {
+        background-color: white;
+        color: black;
+        height: 40px;
+        border-radius: 6px;
+      }
+      .red-bg {
+        background-color: red;
+        opacity: 0.5;
+        height: 40px;
+        border-radius: 6px;
+      }
+
+    }
+  }
+
+  .parms-arg-conatiner {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .parms-arg-title {
+      width: 100%;
+      height: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .parms-title,
+      .arg-title {
+        width: 47%;
+        height: 100%;
+        border-radius: 6px;
+        margin: 1rem;
+        color: white;
+        font-weight: 800;
+        font-size: 18px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      .arg-title {
         span {
-          color: white;
+          margin-left: 30px;
         }
       }
     }
-    .button-container {
-      width: 100%;
-      height: 80px;
-      display: flex;
-      justify-content: start;
-      .buutons {
-        width: 70%;
-        margin-left: 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        span{
-          text-decoration: underline;
-          color: white;
-        }
-        .white-bg {
-          background-color: white;
-          color: black;
-          height: 40px;
-          border-radius: 6px;
-        }
-        .red-bg {
-          background-color: red;
-          opacity: 0.5;
-          height: 40px;
-          border-radius: 6px;
-        }
-
-      }
-    }
-
-    .parms-arg-conatiner {
+    .params-arg-content {
       width: 100%;
       height: 250px;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: space-between;
-      .parms-arg-title {
-        width: 100%;
-        height: 20px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        .parms-title,
-        .arg-title {
-          width: 47%;
-          height: 100%;
-          border-radius: 6px;
-          margin: 1rem;
-          color: white;
-          font-weight: 800;
-          font-size: 18px;
-          font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-        .arg-title {
-          span {
-            margin-left: 30px;
-          }
-        }
-      }
-      .params-arg-content {
-        width: 100%;
-        height: 250px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+      .new-params-conatiner{
+        width: 45%;
+        height: 100%;
         .params-conatiner {
-          width: 47%;
+          width: 100%;
           height: 100%;
           border: 2px solid white;
           border-radius: 6px;
@@ -133,8 +147,27 @@
             margin-top: -15px;
           }
         }
+        .parms-title,
+      .arg-title {
+        margin: 1rem;
+        color: white;
+        font-weight: 800;
+        font-size: 18px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      }
+      .new-args-conatiner{
+        width: 45%;
+        height: 100%;
+        .arg-title {
+          margin: 1rem;
+          color: white;
+          font-weight: 800;
+          font-size: 18px;
+          font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
         .arg-conatiner {
-          width: 47%;
+          width: 95%;
           height: 100%;
           margin: 1rem;
           display: flex;
@@ -146,111 +179,209 @@
           }
         }
       }
+
     }
-    .config-file {
+  }
+  .config-file {
+    height: 40px;
+    width: 100%;
+    margin-top: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    .transperent-bg {
+      background-color: transparent;
       height: 40px;
-      width: 100%;
-      margin-top: 50px;
-      display: flex;
-      justify-content: start;
-      align-items: center;
-      .transperent-bg {
-        background-color: transparent;
-        height: 40px;
-        border-radius: 6px;
-        border: 2px solid gray;
-        margin-left: 20px;
+      border-radius: 6px;
+      border: 2px solid gray;
+      margin-left: 20px;
+    }
+  }
+  .charts-container {
+    width: 100%;
+    height: 300px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    .chart-container {
+      width: 65%;
+      border: 2px solid white;
+      border-radius: 6px;
+      margin: 1rem;
+      height: 100%;
+      .heading-container{
+        margin: 10px;
+        color: white;
+        font-weight: 600;
+        font-size: 16px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      .chart-element{
+        width: 100%;
+        height: 88%;
       }
     }
-    .charts-container {
-      width: 100%;
-      height: 300px;
-      margin-top: 40px;
-      display: flex;
-      justify-content: space-between;
-      flex-direction: row;
-      .chart-container {
-        width: 65%;
-        border: 2px solid white;
-        border-radius: 6px;
-        margin: 1rem;
-        height: 100%;
-        .heading-container{
-          margin: 10px;
-          color: white;
-          font-weight: 600;
-          font-size: 16px;
-          font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-        .chart-element{
-          width: 100%;
-          height: 88%;
-        }
+    .content-container {
+      width: 30%;
+      border: 2px solid white;
+      border-radius: 6px;
+      margin: 1rem;
+      height: 100%;
+      .heading-container{
+        margin: 10px;
+        color: white;
+        font-weight: 600;
+        font-size: 16px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
       }
-      .content-container {
-        width: 30%;
-        border: 2px solid white;
-        border-radius: 6px;
-        margin: 1rem;
-        height: 100%;
-        .heading-container{
-          margin: 10px;
-          color: white;
-          font-weight: 600;
-          font-size: 16px;
-          font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+      .content-inner-container{
+        height: 85%;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        .content{
+            height: 10%;
+            display: flex;
+            width: 80%;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            margin-bottom: 10px;
+            .heading{
+                width: 60%;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                height: 100%;
+            }
+            .value{
+                width: 40%;
+                height: 100%;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+
+            }
+            .progreesbar{
+                width: 100%;
+                background-color: gray;
+                height: 15px;
+                border-radius: 10px;
+                .check{
+                    width: 50%;
+                    background-color: white;
+                    height: 100%;
+                border-radius: 10px;
+
+                }
+            }
+          }
+          .content:first-child{
+            margin-top: 20px;
+          }
+      }
+
+
+    }
+  }
+}
+
+
+
+
+
+@media only screen and (max-width: 920px) {
+  .button-container{
+    .buutons{
+      width: 100% !important;
+      margin-left: 0px !important;
+
+    }
+  }
+  .parms-arg-conatiner{
+    .params-arg-content{
+      display: flex;
+      flex-direction: column !important;
+      height: 400px !important;
+      .new-params-conatiner{
+        margin-top: 20px;
+
+        width: 100% !important;
+      }
+      .new-args-conatiner{
+        margin-top: 60px;
+        width: 100% !important;
+      }
+      .params-conatiner{
+        margin: 0rem !important ;
+        width: 95% !important;
+        .content-params{
+          height: 60px !important;
+
+        }
+        .content-params:first-child {
+          margin-top: 0px !important;
         }
 
-        .content-inner-container{
-          height: 85%;
-          display: flex;
-          width: 100%;
-          flex-direction: column;
-          align-items: center;
-          .content{
-              height: 10%;
-              display: flex;
-              width: 80%;
-              flex-direction: row;
-              justify-content: space-between;
-              align-items: center;
-              color: white;
-              margin-bottom: 10px;
-              .heading{
-                  width: 60%;
-                  display: flex;
-                  justify-content: start;
-                  align-items: center;
-                  height: 100%;
-              }
-              .value{
-                  width: 40%;
-                  height: 100%;
-                  display: flex;
-                  justify-content: start;
-                  align-items: center;
+      }
+      .arg-conatiner{
+        width: 95% !important;
+        margin: 0rem !important ;
 
-              }
-              .progreesbar{
-                  width: 100%;
-                  background-color: gray;
-                  height: 15px;
-                  border-radius: 10px;
-                  .check{
-                      width: 50%;
-                      background-color: white;
-                      height: 100%;
-                  border-radius: 10px;
 
-                  }
-              }
-            }
-            .content:first-child{
-              margin-top: 20px;
-            }
-        }
+      }
 
+    }
+  }
+  .config-file{
+    margin: 0rem !important;
+    margin-top: 400px !important;
+  }
+  .charts-container{
+
+    flex-direction: column !important;
+    .chart-container {
+      width: 95% !important;
+      border: 2px solid white;
+      border-radius: 6px;
+      margin: 0 !important;
+      height: 350px !important;
+      margin-top: 15px !important;
+
+      .heading-container{
+        margin: 10px;
+        color: white;
+        font-weight: 600;
+        font-size: 16px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      .chart-element{
+        width: 100%;
+        height: 300px !important;
+      }
+    }
+    .content-container {
+      width: 95% !important;
+      margin: 0 !important;
+      margin-top: 15px !important;
+
+    }
+  }
+  .button-container{
+    display: flex !important;
+
+    .buutons{
+      display: flex !important;
+      flex-direction: column;
+      div{
+        width: 98% !important;
+        margin-top: 10px;
 
       }
     }
   }
+}

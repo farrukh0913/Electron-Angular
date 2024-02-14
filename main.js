@@ -1,7 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const url = require('url');
-const electronIpcMain = require('electron').ipcMain;
 let win;
 
 function createWindow() {
@@ -14,7 +13,6 @@ function createWindow() {
         }
     });
 
-    // shell.openItem(echo "Hello World")
     win.loadURL(
         url.format({
             pathname: path.join(__dirname, 'dist/my-electron-app/browser/index.html'),
@@ -27,7 +25,8 @@ function createWindow() {
         win = null;
     });
 
-    res = exec('ping xxx.xxx.xxx', Callback);
+    ls();
+
     win.webContents.openDevTools();
 }
 
@@ -44,3 +43,12 @@ app.on('activate', () => {
         createWindow()
     }
 })
+
+// run terminal command
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
+async function ls() {
+    const { stdout, stderr } = await exec('node -v');
+    console.log('stdout:', stdout);
+    console.log('stderr:', stderr);
+  }

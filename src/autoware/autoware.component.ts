@@ -4,11 +4,15 @@ import * as echarts from 'echarts';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+
+export class MyModule {}
 
 @Component({
   selector: 'autoware-root',
   standalone: true,
-  imports: [MatButtonModule, MatFormFieldModule, MatInputModule],
+  imports: [CommonModule, HttpClientModule, MatButtonModule, MatFormFieldModule, MatInputModule],
   templateUrl: './autoware.component.html',
   styleUrl: './autoware.component.scss'
 })
@@ -16,11 +20,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 export class AutowareComponent {
   title = 'my-electron-app';
   charts: any;
+  users: any[] = [];
 
+  constructor(private http: HttpClient) {}
   @HostListener('window:resize', ['$event'])
 
   ngOnInit(): void {
-    this.renderChart()
+    this.renderChart();
   }
 
   onResize(event: Event): void {
@@ -85,4 +91,14 @@ export class AutowareComponent {
     this.charts.setOption(option);
   }
 
+  getUsers() {
+    this.http.get('http://localhost:3000/users')
+      .subscribe((data: any) => {
+        console.log('data: ', data);
+        this.users = data
+        // handle the data
+      });
+  }
+
 }
+
