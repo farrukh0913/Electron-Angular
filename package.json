@@ -1,0 +1,50 @@
+{
+  "name": "my-electron-app",
+  "version": "0.0.0",
+  "main": "main.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "electron-build": "ng build && electron .",
+    "electron": "electron .",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "package:win": "electron-packager . my-electron-app --platform=win32 --arch=x64 --out=dist --overwrite",
+    "package:mac": "electron-packager . my-electron-app --platform=darwin --arch=x64 --out=dist --overwrite",
+    "package:linux": "electron-packager . my-electron-app --platform=linux --arch=x64 --out=dist --overwrite"
+  },
+  "private": true,
+  "dependencies": {
+    "-": "^0.0.1",
+    "@angular/animations": "^17.1.0",
+    "@angular/common": "^17.1.0",
+    "@angular/compiler": "^17.1.0",
+    "@angular/core": "^17.1.0",
+    "@angular/forms": "^17.1.0",
+    "@angular/platform-browser": "^17.1.0",
+    "@angular/platform-browser-dynamic": "^17.1.0",
+    "@angular/router": "^17.1.0",
+    "electron-is-dev": "^3.0.1",
+    "electron-packager": "^17.1.2",
+    "rxjs": "~7.8.0",
+    "save-dev": "^0.0.1-security",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.1.3",
+    "@angular/cli": "^17.1.3",
+    "@angular/compiler-cli": "^17.1.0",
+    "@types/jasmine": "~5.1.0",
+    "electron": "^28.2.2",
+    "electron-builder": "^24.9.1",
+    "electron-rebuild": "^3.2.9",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.3.2"
+  }
+}
