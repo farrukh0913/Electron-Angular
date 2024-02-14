@@ -11,4 +11,7 @@ import { RouterOutlet } from '@angular/router';
 
 export class AppComponent {
   title = 'my-electron-app';
+  constructor(){
+    this.title = "Test Electron!";
+  }
 }

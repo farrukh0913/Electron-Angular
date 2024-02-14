@@ -1,0 +1,151 @@
+<div class="main-container">
+    <div class="toolbar">
+      <div class="inner-section">
+        <span class="about">About</span>
+        <span class="title">Autoware Launch GUI</span>
+      </div>
+    </div>
+    <div class="button-container">
+      <div class="buutons">
+        <span>Planning_simulator.launch.xml</span>
+        <button mat-raised-button class="white-bg">Launch Autoware</button>
+        <button mat-raised-button class="red-bg">Kill Autoware</button>
+        <button mat-raised-button class="white-bg">Autoware Path</button>
+      </div>
+    </div>
+    <div class="parms-arg-conatiner">
+      <div class="parms-arg-title">
+        <div class="parms-title">
+          <span> Parameters </span>
+        </div>
+        <div class="arg-title">
+          <span> Arguments added to launch </span>
+        </div>
+      </div>
+      <div class="params-arg-content">
+        <div class="params-conatiner">
+          <div class="content-params">
+            <span>map_path</span>
+            <button mat-raised-button class="transperent-bg">
+              Edit Parameter
+            </button>
+          </div>
+          <div class="content-params">
+            <span>vehcile_model</span>
+            <button mat-raised-button class="transperent-bg">
+              Edit Parameter
+            </button>
+          </div>
+          <div class="content-params">
+            <span>sensor_model</span>
+            <button mat-raised-button class="transperent-bg">
+              Edit Parameter
+            </button>
+          </div>
+        </div>
+        <div class="arg-conatiner">
+          <div class="inputs">
+            <mat-form-field appearance="outline" style="width: 99%">
+              <mat-label>map_path</mat-label>
+              <input
+                matInput
+                placeholder="Ex. Pizza"
+                value="$HOME/autoware_map/ytu"
+              />
+            </mat-form-field>
+          </div>
+          <div class="inputs">
+            <mat-form-field appearance="outline" style="width: 99%">
+              <mat-label>vehcile_model</mat-label>
+              <input matInput placeholder="Ex. Pizza" value="sample_vehicle" />
+            </mat-form-field>
+          </div>
+          <div class="inputs">
+            <mat-form-field appearance="outline" style="width: 99%">
+              <mat-label>sensor_model</mat-label>
+              <input matInput placeholder="Ex. Pizza" value="sample_sensor_kit" />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="config-file">
+      <button mat-raised-button class="transperent-bg">Slecet Config File</button>
+    </div>
+    <div class="charts-container">
+      <div class="chart-container">
+        <div class="heading-container">
+          <span>General CPU usage: &nbsp;4%</span>
+        </div>
+        <div class="chart-element">
+          <div id="echarts-chart" class="chart-element"></div>
+        </div>
+      </div>
+      <div class="content-container">
+        <div class="heading-container">
+          <span>Top processes :</span>
+        </div>
+        <div class="content-inner-container">
+          <div class="content">
+            <div class="heading">
+              <span> WebKitWebProcess : </span>
+            </div>
+            <div class="value">
+              <span> 36% &nbsp;cpu </span>
+            </div>
+          </div>
+          <div class="content">
+            <div class="heading">
+              <span> chrome : </span>
+            </div>
+            <div class="value">
+              <span> 36% &nbsp;cpu </span>
+            </div>
+          </div>
+          <div class="content">
+            <div class="heading">
+              <span> gnome-control-c : </span>
+            </div>
+            <div class="value">
+              <span> 14.2% &nbsp;cpu </span>
+            </div>
+          </div>
+          <div class="content">
+            <div class="heading">
+              <span> chrome : </span>
+            </div>
+            <div class="value">
+              <span> 13.7% &nbsp;cpu </span>
+            </div>
+          </div>
+          <div class="content">
+            <div class="heading">
+              <span> chrome : </span>
+            </div>
+            <div class="value">
+              <span> 10.5% &nbsp;cpu </span>
+            </div>
+          </div>
+          <div class="content">
+            <div class="heading">
+              <span> Memory used: </span>
+            </div>
+            <div class="value">
+              <span> 13.39 &nbsp;GB /62.48&nbsp; GB </span>
+            </div>
+          </div>
+          <div class="content">
+
+              <div class="progreesbar">
+                  <div class="check">
+
+                  </div>
+
+              </div>
+              <!-- <mat-progress-bar  class="green-progress"  value="30"></mat-progress-bar> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
