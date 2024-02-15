@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { IpcRenderer } from 'electron';
 import { RouterOutlet } from '@angular/router';
 import * as echarts from 'echarts';
 import {MatButtonModule} from '@angular/material/button';
@@ -6,8 +7,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-
-export class MyModule {}
+import { callJSFun } from '../assets/test.js';
 
 @Component({
   selector: 'autoware-root',
@@ -21,10 +21,13 @@ export class AutowareComponent {
   title = 'my-electron-app';
   charts: any;
   users: any[] = [];
+  ipc: IpcRenderer | any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.initIPC();
+  }
+
   @HostListener('window:resize', ['$event'])
-
   ngOnInit(): void {
     this.renderChart();
   }
@@ -58,8 +61,6 @@ export class AutowareComponent {
         {
           type: 'category',
           data: ['cpu0', 'cpu2', 'cpu4', 'cpu6', 'cpu8', 'cpu10', 'cpu12',"cpu14", "cpu16","cpu18"],
-
-
         }
 
       ],
@@ -92,12 +93,27 @@ export class AutowareComponent {
   }
 
   getUsers() {
-    this.http.get('http://localhost:3000/users')
-      .subscribe((data: any) => {
-        console.log('data: ', data);
-        this.users = data
-        // handle the data
-      });
+    // this.http.get('http://localhost:3000/users')
+    //   .subscribe((data: any) => {
+    //     console.log('data: ', data);
+    //     this.users = data
+    //     // handle the data
+    //   });
+
+    callJSFun();
+    this.ipc.send('runFun', 'ls');
+  }
+
+  initIPC(){
+    if ((<any>window).require) {
+      try {
+        this.ipc = (<any>window).require('electron').ipcRenderer
+      } catch (error) {
+        throw error;
+      }
+    } else {
+      console.warn('Could not load electron ipc');
+    }
   }
 
 }
