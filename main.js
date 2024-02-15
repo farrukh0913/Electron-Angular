@@ -47,7 +47,7 @@ const exec = util.promisify(require("child_process").exec);
 
 async function terminalCommand() {
   console.log("TerminalCommand Method Executed:>> ");
-  const { stdout, stderr } = await exec("node -v");
+  const { stdout, stderr } = await exec("mkdir ~/Desktop/school");
   console.log("stdout:", stdout);
   console.log("stderr:", stderr);
 }

@@ -22,20 +22,20 @@ export class AutowareComponent {
   charts: any;
   users: any[] = [];
   ipc: IpcRenderer | any;
-
-  constructor(private http: HttpClient) {
-    this.initIPC();
-  }
-
   @HostListener('window:resize', ['$event'])
-  ngOnInit(): void {
-    this.renderChart();
-  }
-
   onResize(event: Event): void {
     if (this.charts) {
       this.charts.resize();
     }
+  }
+
+  constructor(private http: HttpClient) {
+    this.initIPC();
+
+  }
+
+  ngOnInit(): void {
+    this.renderChart();
   }
 
   renderChart() {

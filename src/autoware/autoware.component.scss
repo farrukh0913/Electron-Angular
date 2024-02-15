@@ -2,12 +2,6 @@
   margin-left: 10px;
 }
 
-.title{
-    font-weight: 800;
-    font-size: 18px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
 ::ng-deep .mat-mdc-text-field-wrapper {
   height: 40px !important;
 }
@@ -295,6 +289,7 @@
 
 
 @media only screen and (max-width: 920px) {
+
   .button-container{
     .buutons{
       width: 100% !important;
@@ -319,6 +314,8 @@
       .params-conatiner{
         margin: 0rem !important ;
         width: 95% !important;
+        margin-left: 10px !important;
+
         .content-params{
           height: 60px !important;
 
@@ -331,6 +328,7 @@
       .arg-conatiner{
         width: 95% !important;
         margin: 0rem !important ;
+        margin-left: 10px !important;
 
 
       }
@@ -342,8 +340,9 @@
     margin-top: 400px !important;
   }
   .charts-container{
-
+height: 730px !important;
     flex-direction: column !important;
+    margin-bottom: 20px !important;
     .chart-container {
       width: 95% !important;
       border: 2px solid white;
@@ -351,6 +350,8 @@
       margin: 0 !important;
       height: 350px !important;
       margin-top: 15px !important;
+    margin-left: 10px !important;
+
 
       .heading-container{
         margin: 10px;
@@ -368,6 +369,8 @@
       width: 95% !important;
       margin: 0 !important;
       margin-top: 15px !important;
+    margin-left: 10px !important;
+
 
     }
   }
@@ -378,10 +381,19 @@
       display: flex !important;
       flex-direction: column;
       div{
-        width: 98% !important;
+        width: 95% !important;
         margin-top: 10px;
+
+        button{
+          min-width: 160px !important;
+        }
+        .red-bg{
+          min-width: 200px !important;
+        }
+
 
       }
     }
   }
+
 }
