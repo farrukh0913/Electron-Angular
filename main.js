@@ -41,17 +41,18 @@ app.on("activate", () => {
   }
 });
 
-// run terminal command
+// Run Terminal Command
 const util = require("util");
 const exec = util.promisify(require("child_process").exec);
-function ls(){
-  console.log("Button-clicked2");
-  const { stdout, stderr } = exec("node -v");
+
+async function terminalCommand() {
+  console.log("TerminalCommand Method Executed:>> ");
+  const { stdout, stderr } = await exec("node -v");
   console.log("stdout:", stdout);
   console.log("stderr:", stderr);
 }
 
 ipcMain.on('runFun', (event, arg) => {
-  console.log('IPC RUNNING VERY FAST ');
-  ls()
+  console.log('IPC RUNNING VERY FAST');
+  terminalCommand();
 });

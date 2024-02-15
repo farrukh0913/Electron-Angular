@@ -105,7 +105,7 @@ export class AutowareComponent {
   }
 
   initIPC(){
-    if ((<any>window).require) {
+    if ((<any>window)?.require) {
       try {
         this.ipc = (<any>window).require('electron').ipcRenderer
       } catch (error) {
