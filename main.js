@@ -10,7 +10,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       allowFileAccess: true,
-      contextIsolation: false // for IPC
+      contextIsolation: false, // for IPC
     },
   });
 
@@ -22,7 +22,9 @@ function createWindow() {
     })
   );
 
-  win.on("closed", () => { win = null });
+  win.on("closed", () => {
+    win = null;
+  });
 
   win.webContents.openDevTools();
 }
@@ -45,14 +47,19 @@ app.on("activate", () => {
 const util = require("util");
 const exec = util.promisify(require("child_process").exec);
 
-async function terminalCommand() {
-  console.log("TerminalCommand Method Executed:>> ");
-  const { stdout, stderr } = await exec("mkdir ~/Desktop/school");
-  console.log("stdout:", stdout);
-  console.log("stderr:", stderr);
+async function runTerminalCommand(command, directory = null) {
+  try {
+    const options = directory ? { cwd: directory } : undefined;
+    const { stdout, stderr } = await exec(command, options);
+    console.log("stdout:", stdout);
+    console.log("stderr:", stderr);
+  } catch (error) {
+    // console.error("Error executing command:", error);
+    return error;
+  }
 }
 
-ipcMain.on('runFun', (event, arg) => {
-  console.log('IPC RUNNING VERY FAST');
-  terminalCommand();
+ipcMain.on("runTerminalCommands", async (event, arg) => {
+  await runTerminalCommand(arg.bashCommand, "/");
+  await runTerminalCommand(arg.launchAutoware, "/");
 });

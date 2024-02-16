@@ -1,18 +1,17 @@
 import { Component, HostListener } from '@angular/core';
 import { IpcRenderer } from 'electron';
-import { RouterOutlet } from '@angular/router';
 import * as echarts from 'echarts';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { callJSFun } from '../assets/test.js';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'autoware-root',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, MatButtonModule, MatFormFieldModule, MatInputModule],
+  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatInputModule],
   templateUrl: './autoware.component.html',
   styleUrl: './autoware.component.scss'
 })
@@ -22,6 +21,7 @@ export class AutowareComponent {
   charts: any;
   users: any[] = [];
   ipc: IpcRenderer | any;
+  autoWareForm: FormGroup | any;
   @HostListener('window:resize', ['$event'])
   onResize(event: Event): void {
     if (this.charts) {
@@ -29,8 +29,13 @@ export class AutowareComponent {
     }
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private readonly fb: FormBuilder) {
     this.initIPC();
+    this.autoWareForm = this.fb.group({
+      map_Path: ['$HOME/autoware_map/sample-map-t', Validators.required],
+      vechile_Model: ['sample_vehicle', [Validators.required]],
+      sensor_model: ['sample_sensor_kit', [Validators.required]],
+    });
 
   }
 
@@ -40,7 +45,7 @@ export class AutowareComponent {
 
   renderChart() {
     const chartElement = document.getElementById('echarts-chart');
-     this.charts = echarts.init(chartElement);
+    this.charts = echarts.init(chartElement);
 
     // Define your chart options
     const option = {
@@ -60,7 +65,7 @@ export class AutowareComponent {
       xAxis: [
         {
           type: 'category',
-          data: ['cpu0', 'cpu2', 'cpu4', 'cpu6', 'cpu8', 'cpu10', 'cpu12',"cpu14", "cpu16","cpu18"],
+          data: ['cpu0', 'cpu2', 'cpu4', 'cpu6', 'cpu8', 'cpu10', 'cpu12', "cpu14", "cpu16", "cpu18"],
         }
 
       ],
@@ -69,9 +74,9 @@ export class AutowareComponent {
           type: 'value',
           splitLine: {
             lineStyle: {
-                color: 'transperent'
+              color: 'transperent'
             }
-        }
+          }
         },
 
 
@@ -83,7 +88,7 @@ export class AutowareComponent {
           name: 'Direct',
           type: 'bar',
           barWidth: '30%',
-          data: [100, 150, 200, 334, 390, 330, 220,120,330,240]
+          data: [100, 150, 200, 334, 390, 330, 220, 120, 330, 240]
         }
       ]
     };
@@ -92,19 +97,19 @@ export class AutowareComponent {
     this.charts.setOption(option);
   }
 
-  getUsers() {
-    // this.http.get('http://localhost:3000/users')
-    //   .subscribe((data: any) => {
-    //     console.log('data: ', data);
-    //     this.users = data
-    //     // handle the data
-    //   });
+  async launchAutoware() {
+    // callJSFun();
+    console.log('this.autoWareForm.value: ', this.autoWareForm.value);
+    const command: string = `ros2 launch autoware_launch planning_simulator.launch.xml map_path:=${this.autoWareForm.value.map_Path} vehicle_model:=${this.autoWareForm.value.vechile_Model} sensor_model:=${this.autoWareForm.value.sensor_model}`
+    const commands = {
+      bashCommand: 'mkdir ~/Desktop/school',
+      launchAutoware: 'mkdir ~/Desktop/school2'
+    }
 
-    callJSFun();
-    this.ipc.send('runFun', 'ls');
+    this.ipc.send('runTerminalCommands', commands);
   }
 
-  initIPC(){
+  initIPC() {
     if ((<any>window)?.require) {
       try {
         this.ipc = (<any>window).require('electron').ipcRenderer
@@ -117,4 +122,3 @@ export class AutowareComponent {
   }
 
 }
-

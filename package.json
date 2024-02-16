@@ -9,9 +9,9 @@
     "electron": "electron .",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "package:win": "electron-packager . my-electron-app --platform=win32 --arch=x64 --out=dist --overwrite",
-    "package:mac": "electron-packager . my-electron-app --platform=darwin --arch=x64 --out=dist --overwrite",
-    "package:linux": "electron-packager . my-electron-app --platform=linux --arch=x64 --out=dist --overwrite"
+    "package:win": "electron-packager . — platform=win32",
+    "package:mac": "electron-packager . — platform=darwin",
+    "package:linux": ""
   },
   "private": true,
   "dependencies": {
