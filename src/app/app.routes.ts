@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { AutowareComponent } from '../autoware/autoware.component';
+import { AppComponent } from './app.component';
 
 export const routes: Routes = [
-    {
-        path:'',
-        component: AutowareComponent
-    }
+    // {
+    //     path: '',
+    //     component: AppComponent
+    // }
 ];
