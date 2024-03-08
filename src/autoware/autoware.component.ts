@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { IpcRenderer } from 'electron';
 import * as echarts from 'echarts';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,7 +16,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './autoware.component.scss'
 })
 
-export class AutowareComponent {
+export class AutowareComponent implements AfterViewInit {
   title = 'my-electron-app';
   charts: any;
   users: any[] = [];
@@ -38,14 +38,14 @@ export class AutowareComponent {
     });
 
   }
-
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.renderChart();
+
   }
 
   renderChart() {
-    const chartElement = document.getElementById('echarts-chart');
-    this.charts = echarts.init(chartElement);
+    const chartElement = document?.getElementById('echarts-chart');
+    this.charts = echarts?.init(chartElement);
 
     // Define your chart options
     const option = {

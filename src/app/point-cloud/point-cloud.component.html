@@ -1,0 +1,65 @@
+<form [formGroup]="pointCloud">
+    <div class="main-container">
+        <!-- <input type="file" (change)="onFileSelected($event)"> -->
+    <div class="inner-container">
+        <div class="fieldset">
+          <mat-form-field appearance="outline" style="width: 99%">
+            <mat-label>Browser Pointcould Bash file</mat-label>
+            <input
+              matInput
+              formControlName="path"
+              readonly
+            />
+          </mat-form-field>
+          <button mat-raised-button color="primary" class="white-bg1" (click)="openDirectory()" >Choose file</button>
+        </div>
+        <div class="fieldset">
+            <mat-form-field appearance="outline" style="width: 99%">
+                  <mat-label>INPUT DIR</mat-label>
+                  <input
+                    matInput
+                    formControlName="inputDir"
+                  />
+                </mat-form-field>
+
+        </div>
+        <div class="fieldset">
+            <mat-form-field appearance="outline" style="width: 99%">
+                  <mat-label>OUTPUT DIR</mat-label>
+                  <input
+                    matInput
+                    formControlName="outputDir"
+                  />
+                </mat-form-field>
+
+        </div>
+        <div class="fieldset">
+            <mat-form-field appearance="outline" style="width: 99%">
+                  <mat-label>PREFIX</mat-label>
+                  <input
+                    matInput
+                    formControlName="prefix"
+                  />
+                </mat-form-field>
+
+        </div>
+        <div class="fieldset">
+            <mat-form-field appearance="outline" style="width: 99%">
+                  <mat-label>CONFIG</mat-label>
+                  <input
+                    matInput
+                    formControlName="config"
+                  />
+                </mat-form-field>
+
+        </div>
+        <div class="fieldset">
+    <button mat-raised-button color="primary" class="white-bg">Launch Pointcloud</button>
+
+        </div>
+
+
+    </div>
+    </div>
+</form>
+

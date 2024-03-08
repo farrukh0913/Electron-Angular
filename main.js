@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain ,dialog } = require("electron");
 const path = require("path");
 const url = require("url");
 let win;
@@ -59,7 +59,31 @@ async function runTerminalCommand(command, directory = null) {
   }
 }
 
+async function selectDirectory(mainWindow) {
+  return new Promise((resolve, reject) => {
+    dialog.showOpenDialog(mainWindow, {
+      properties: ['openDirectory']
+    }).then(result => {
+      if (!result.canceled && result.filePaths.length > 0) {
+        resolve(result.filePaths[0]);
+      } else {
+        reject(new Error('No directory selected'));
+      }
+    }).catch(err => {
+      reject(err);
+    });
+  });
+}
+
 ipcMain.on("runTerminalCommands", async (event, arg) => {
   await runTerminalCommand(arg.bashCommand, "/");
   await runTerminalCommand(arg.launchAutoware, "/");
+});
+
+ipcMain.on("openDirectory", async (event, arg) => {
+  console.log('event: ', event);
+  console.log('arg: ', arg);
+  const selectedDirectory = await selectDirectory(win); // Pass mainWindow reference
+  console.log('selectedDirectory: ', selectedDirectory);
+    event.reply("directorySelected", selectedDirectory);
 });

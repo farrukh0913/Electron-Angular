@@ -18,9 +18,9 @@
     </mat-button-toggle-group>
   </div>
 
-  <mat-tab-group [color]="colorToggle.value" [backgroundColor]="backgroundColorToggle.value">
-    <mat-tab label="First"> <autoware-root></autoware-root></mat-tab>
-    <mat-tab label="Second">Content 2</mat-tab>
+  <mat-tab-group [color]="colorToggle.value" [backgroundColor]="backgroundColorToggle.value" style="--mat-tab-header-with-background-background-color: black;">
+    <mat-tab label="Autoware Launch GUI"> <autoware-root></autoware-root></mat-tab>
+    <mat-tab label="Pointcloud Launch GUI"> <app-point-cloud></app-point-cloud></mat-tab>
   </mat-tab-group>
 
 <router-outlet></router-outlet>
